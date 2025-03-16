@@ -108,6 +108,5 @@ test('UI Controls', async ({page})=>
         await page.locator("#username").fill(userId[0]);
         console.log(await page.locator("#username").textContent());      
 
-        //mar16 eve - nitro--
-        console.log(await page.locator("#username").textContent());
+        //mar16 eve 
     });
