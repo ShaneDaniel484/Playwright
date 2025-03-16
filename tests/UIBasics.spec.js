@@ -1,4 +1,5 @@
 const {test, expect} = require('@playwright/test');
+const { text } = require('stream/consumers');
 
 test('Browser', async ({page})=>
 {
@@ -39,7 +40,7 @@ test('Browser', async ({page})=>
 
 });
 
-test.only('UI Controls', async ({page})=>
+test('UI Controls', async ({page})=>
     {
         //elements
         const UserName = page.locator("#username");
@@ -50,6 +51,7 @@ test.only('UI Controls', async ({page})=>
         const RadioBtn = page.locator(".checkmark");
         const PopUp = page.locator("#okayBtn");
         const CardTitles = page.locator(".card-body a");
+        const BlinkingTxt = page.locator(".blinkingText");
 
         //actions
         await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
@@ -63,10 +65,45 @@ test.only('UI Controls', async ({page})=>
         await PopUp.click();
         await CheckBox.click();
         expect (CheckBox).toBeChecked();
-        await SignInBtn.click();
-        await expect(page).toHaveTitle("ProtoCommerce");
-        console.log(await CardTitles.allTextContents());
-        //MARCH 16 - will start from here
+
+        //MARCH 16
+        //attribute assertion
+        await expect(BlinkingTxt).toHaveAttribute("Class","blinkingText");
+        await BlinkingTxt.click();
         
+
+        // await SignInBtn.click();
+        // await expect(page).toHaveTitle("ProtoCommerce");
+        // console.log(await CardTitles.allTextContents());
+        
+        
+    });
+
+
+    test.only("Child Windows Handling",async ({browser})=>
+    {   
+        const context = await browser.newContext();
+        const page = await context.newPage();
+        //elements
+        const BlinkingTxt = page.locator(".blinkingText");
+        //const UserName = page.locator("#username");
+
+        //actions
+        await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+        
+        //page opening action should be executed parallel with listener
+        const [newPage] = await Promise.all(
+            [
+                context.waitForEvent("page"),
+                BlinkingTxt.click(),
+        ]);
+
+        const text = await newPage.locator(".red").first().textContent();
+        const arrayTxt = text.split("@");
+        const domain = arrayTxt[1].split(" ");
+        const userId = domain[0].split(".");
+        //console.log(userId[0]);
+        await page.locator("#username").fill(userId[0]);
+        console.log(await page.locator("#username").textContent());      
         
     });
