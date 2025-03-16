@@ -65,8 +65,10 @@ test('UI Controls', async ({page})=>
         await PopUp.click();
         await CheckBox.click();
         expect (CheckBox).toBeChecked();
-
-        //MARCH 16
+        await SignInBtn.click();
+        await expect(page).toHaveTitle("ProtoCommerce");
+        console.log(await CardTitles.allTextContents());
+                //MARCH 16
         //attribute assertion
         await expect(BlinkingTxt).toHaveAttribute("Class","blinkingText");
         await BlinkingTxt.click();
