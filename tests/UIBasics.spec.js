@@ -49,6 +49,7 @@ test.only('UI Controls', async ({page})=>
         const DropDown = page.locator("select.form-control");
         const RadioBtn = page.locator(".checkmark");
         const PopUp = page.locator("#okayBtn");
+        const CardTitles = page.locator(".card-body a");
 
         //actions
         await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
@@ -64,5 +65,6 @@ test.only('UI Controls', async ({page})=>
         expect (CheckBox).toBeChecked();
         await SignInBtn.click();
         await expect(page).toHaveTitle("ProtoCommerce");
+        console.log(await CardTitles.allTextContents());
         
     });
