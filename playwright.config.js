@@ -10,9 +10,11 @@ export default defineConfig({
   expect: {
     timeout: 40 * 1000,
   },
-  // reporter: 'html',
+   //reporter: 'html',
   use: {
     browserName: 'chromium',
     headless: false,
+    //screenshot: 'on',
+    //trace: 'retain-on-failure', //only for failed test cases
   },
 });
