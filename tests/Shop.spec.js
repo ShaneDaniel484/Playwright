@@ -78,7 +78,7 @@ test.only('Place Order', async ({ browser }) => {
     await page.waitForLoadState('networkidle');
     await expect(orderPageTitle).toHaveText("Your Orders");
     const orderIDListCount = await orderIDList.count();
-    await page.pause();
+    // await page.pause();
     for(let i=0; i < orderIDListCount; ++i)
     {
         if(await orderIDList.nth(i).textContent() === orderIdClean)
