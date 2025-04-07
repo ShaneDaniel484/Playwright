@@ -14,4 +14,5 @@ test.only('Filter', async ({ browser }) => {
     //chaining multiple actions
     await page.locator("app-card").filter({hasText: 'Nokia Edge'}).getByRole("button").click();
     await checkout.click();
+    //comment--
 });
