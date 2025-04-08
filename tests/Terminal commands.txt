@@ -1,3 +1,30 @@
 to bypass - Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 to run in ui mode - npx playwright test --ui
 to run in debug mode - npx playwright test --debug
+
+
+
+
+Git Commands
+
+//Pull the latest code from main
+git checkout main
+git pull origin main
+
+//Switch to your feature branch
+git checkout dell
+
+//Do your work
+
+//Stage and commit your changes
+git add .
+git commit -m "Enter commit message"
+
+//Switch back to main and merge
+git checkout main
+git pull origin main                # Just in case main got updated remotely
+git merge dell --no-edit            # Merge dell into main without editor
+
+
+// Push your updated main to remote
+git push origin main
