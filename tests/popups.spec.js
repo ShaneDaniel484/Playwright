@@ -22,4 +22,6 @@ test("popup", async({page})=>{
     await accessLink.click();
     const subCount = await framePage.locator(".text h2").textContent();
     console.log("Subscriber count --------->" + subCount.split(" ")[1]);
+
+    //switching to Nitro
 })
