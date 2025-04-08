@@ -13,7 +13,7 @@ export default defineConfig({
    reporter: 'html',
   use: {
     browserName: 'chromium',
-    headless: false,
+    headless: true,
     //screenshot: 'on',
     //trace: 'retain-on-failure', //only for failed test cases
   },
