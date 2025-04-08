@@ -1,0 +1,3 @@
+to bypass - Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+to run in ui mode - npx playwright test --ui
+to run in debug mode - npx playwright test --debug
